@@ -1,0 +1,18 @@
+<button *ngIf="!isLoggedIn" matTooltip="Click to join or continue use with your Google Account" [color]="'warn'"
+    mat-raised-button>
+    Login
+</button>
+<button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="profilemenu">
+    <span class="flex items-center" *ngIf="currentUser">
+        {{ currentUser.displayName }}
+        <img class=" ml-2 rounded-full bg-white w-8 h-8" src="/assets/images/user-png.png" alt="" />
+        <mat-icon>more_vert</mat-icon>
+    </span>
+
+</button>
+<mat-menu #profilemenu="matMenu">
+    <button *ngIf="canEditProfile" mat-menu-item>
+        Profile
+    </button>
+    <button mat-menu-item>Logout</button>
+</mat-menu>

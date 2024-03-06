@@ -1,46 +1,17 @@
+<!-- fxLayout="column" fxLayoutAlign="start center" fxFlexFill  | pe-toolbar: fxFlex.xs="10%" fxFlex.gt-xs="10%" | router-outlet div: fxFlex.xs="80%" fxFlex.gt-xs-->
 <div>
-	<h2>Method #1</h2>
-	<p>Using an Angular Material button.</p>
-	<button mat-raised-button color="primary" (click)="openFilePicker()">
-		<mat-icon>attach_file</mat-icon>
-		Select File
-	</button>
-	<span>{{ file?.name }}</span>
+    <pe-toolbar></pe-toolbar>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+    <!--  </mat-sidenav-container> -->
+    <footer class="footer mat-caption" fxLayout="row" fxLayoutAlign="space-between start">
+        <p>{{ appName }} Version {{ ver }}</p>
+        <p>
+            Problems? contact
+            <a href="mailto:admin@pitcheval.com">the admin</a>
+        </p>
+        <p><a routerLink="/landing/privacy">Privacy Statement</a></p>
+        <p>&copy; 2018-2021 Todd Warren</p>
+    </footer>
 </div>
-<br />
-<div>
-	<h2>Method #2</h2>
-	<p>Using a readonly Angular Material input element.</p>
-	<mat-form-field style="cursor: pointer" class="example-full-width">
-		<input
-			style="cursor: pointer"
-			readonly=""
-			matInput
-			placeholder="{{ file?.name ?? 'No file selected' }}"
-			(click)="openFilePicker()"
-		/>
-		<mat-icon matSuffix>attach_file</mat-icon>
-	</mat-form-field>
-</div>
-
-<p>The both methods use a hidden input element as seen below</p>
-<img src="assets/code.png" style="width: 600px" />
-
-<input
-	style="display: none"
-	type="file"
-	#fileInput
-	accept="image/*"
-	(change)="fileSelected()"
-/>
-
-<p>
-	Guide:
-	<a
-		target="_blank"
-		href="https://stackblitz.com/edit/angular-material-file-select?file=src/app/app.component.html"
-		>https://stackblitz.com/edit/angular-material-file-select?file=src/app/app.component.html</a
-	>
-</p>
-
-<router-outlet />

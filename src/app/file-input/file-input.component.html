@@ -1,0 +1,30 @@
+<div>
+    <h2>Method #1</h2>
+    <p>Using an Angular Material button.</p>
+    <button mat-raised-button color="primary" (click)="openFilePicker()">
+        <mat-icon>attach_file</mat-icon>
+        Select File
+    </button>
+    <span>{{ file?.name }}</span>
+</div>
+<br />
+<div>
+    <h2>Method #2</h2>
+    <p>Using a readonly Angular Material input element.</p>
+    <mat-form-field style="cursor: pointer" class="example-full-width">
+        <input style="cursor: pointer" readonly="" matInput placeholder="{{ file?.name ?? 'No file selected' }}"
+            (click)="openFilePicker()" />
+        <mat-icon matSuffix>attach_file</mat-icon>
+    </mat-form-field>
+</div>
+
+<p>The both methods use a hidden input element as seen below</p>
+<img src="assets/code.png" style="width: 600px" />
+
+<input style="display: none" type="file" #fileInput accept="image/*" (change)="fileSelected()" />
+
+<p>
+    Guide:
+    <a target="_blank"
+        href="https://stackblitz.com/edit/angular-material-file-select?file=src/app/app.component.html">https://stackblitz.com/edit/angular-material-file-select?file=src/app/app.component.html</a>
+</p>

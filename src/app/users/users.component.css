@@ -1,0 +1,25 @@
+.profile-circle {
+    border-radius: 50%;
+    border: 1px solid red;
+}
+
+.profile-pic-chit {
+    padding: 3px;
+}
+
+.user-role {
+    margin: auto 60px;
+}
+
+.roles {
+    margin-left: 30px;
+    word-spacing: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}

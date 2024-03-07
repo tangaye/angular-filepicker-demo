@@ -24,11 +24,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users/users.component';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
     declarations: [AppComponent, FileInputComponent, PeToolbarComponent, PeProfileWidgetComponent, PeHomeComponent, PeEditclassComponent, UsersComponent],
     imports: [
+        MatPaginator,
+        MatPaginatorModule,
         BrowserModule,
         AppRoutingModule,
         MatSelectModule,

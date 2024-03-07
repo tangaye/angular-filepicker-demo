@@ -9,24 +9,11 @@
         </button>
         <mat-menu #menu="matMenu">
             <a routerLink="/class/new" mat-menu-item>New Class</a>
-            <a routerLink="/class" mat-menu-item>Class List</a>
-            <a routerLink="/profile/users" mat-menu-item>Users</a>
-            <a routerLink="/judgesession" mat-menu-item>Judge</a>
-            <button mat-menu-item>Sessions</button>
-            <a routerLink="/summary" mat-menu-item>Results</a>
-            <a mat-menu-item routerLink="/session/questionaire-overview">Questionnaire</a>
+            <a routerLink="/users" mat-menu-item>Users</a>
         </mat-menu>
         <div class="hidden lg:flex">
             <a routerLink="/class/new" mat-button>New Class</a>
-            <a routerLink="/class" mat-button>Class List</a>
-            <a routerLink="/profile/users" mat-button>Users</a>
-            <a *ngIf="isLoggedIn" routerLink="/judgesession" mat-button>Judge</a>
-            <button *ngIf="isLoggedIn && (isAdmin || isFaculty)" mat-button>
-                Sessions
-            </button>
-            <a *ngIf="isLoggedIn && (isAdmin || isFaculty)" routerLink="/summary" mat-button>Results</a>
-            <a *ngIf="isLoggedIn && (isAdmin || isFaculty)" mat-button
-                routerLink="/session/questionaire-overview">Questionnaire</a>
+            <a routerLink="/users" mat-button>Users</a>
         </div>
     </div>
     <div>

@@ -1,11 +1,33 @@
-import { Component } from '@angular/core';
-
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+interface User {
+    name: string;
+    email: string;
+    roles: string[];
+    photo: string;
+    className: string;
+    team: string;
+}
 @Component({
     selector: 'app-users',
     templateUrl: './users.component.html',
     styleUrl: './users.component.css'
 })
-export class UsersComponent {
+export class UsersComponent implements AfterViewInit {
+
+    displayedColumns = [
+        "profilepictureURL",
+        "displayname",
+        "email",
+        "roles",
+        "classname",
+        "teamname"
+    ];
+    userRoles = ["admin", "faculty", "judge", "student"];
+    userRole: boolean = false;
+    public nameSearchText: FormControl = new FormControl();
     users: User[] = [
         {
             photo: "https://randomuser.me/api/portraits/men/1.jpg",
@@ -168,4 +190,11 @@ export class UsersComponent {
             team: "F"
         }
     ]
+    dataSource = new MatTableDataSource<User>(this.users);
+
+    @ViewChild(MatPaginator) paginator: MatPaginator | any = {};
+
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+    }
 }

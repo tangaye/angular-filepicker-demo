@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SectionEvalOverviewComponent } from './section-eval-overview/section-eval-overview.component';
+import { PeHomeComponent } from './pe-home/pe-home.component';
+import { PeEditclassComponent } from './pe-editclass/pe-editclass.component';
 
 const routes: Routes = [
     {
-        path: "eval",
-        component: SectionEvalOverviewComponent,
-        title: "Evaluate session"
+        path: "",
+        component: PeHomeComponent,
+        title: "Home"
+    },
+    {
+        path: "class/new",
+        component: PeEditclassComponent,
+        title: "Edit Class"
     }
 ];
 

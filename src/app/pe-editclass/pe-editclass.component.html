@@ -1,0 +1,142 @@
+<div class="content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4">
+    <mat-card class="class-card lg:col-span-6 p-4">
+        <div class="content">
+            <h2>Class Info</h2>
+        </div>
+        <form [formGroup]="classInfo">
+            <div class="flex flex-col gap-3">
+                <div class="content grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <mat-form-field fxFlex="50">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput formControlName="name" />
+                    </mat-form-field>
+                    <mat-form-field fxFlex="50">
+                        <mat-label>Number</mat-label>
+                        <input type="text" matInput formControlName="number" />
+                    </mat-form-field>
+                </div>
+                <div class="content grid grid-cols-1">
+                    <mat-form-field>
+                        <mat-label>Description</mat-label>
+                        <input class="mat-block" type="text" matInput formControlName="description" />
+                    </mat-form-field>
+                </div>
+                <div class="content grid grid-cols-1 md:grid-cols-6 gap-2">
+                    <mat-form-field class="col-span-2" formControlName="schoolyear">
+                        <mat-label>Academic Year</mat-label>
+                        <mat-select>
+                            <mat-option [value]="'2018-2019'">2018-2019</mat-option>
+                            <mat-option [value]="'2019-2020'">2019-2020</mat-option>
+                            <mat-option [value]="'2020-2021'">2020-2021</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div class="col-span-4 flex justify-between flex-wrap">
+                        <mat-slide-toggle formControlName="fall">Fall</mat-slide-toggle>
+                        <mat-slide-toggle formControlName="winter">Winter</mat-slide-toggle>
+                        <mat-slide-toggle formControlName="spring">Spring</mat-slide-toggle>
+                        <mat-slide-toggle formControlName="fall">Summer</mat-slide-toggle>
+                    </div>
+                </div>
+                <div class="content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                    <mat-form-field>
+                        <mat-label>Class Start</mat-label>
+                        <input type="time" matInput formControlName="meetingtimestart" />
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Class End</mat-label>
+                        <input type="time" matInput formControlName="meetingtimeend" />
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Location</mat-label>
+                        <input type="text" matInput formControlName="meetinglocation" />
+                    </mat-form-field>
+                </div>
+                <div class="content flex justify-between flex-wrap">
+                    <mat-slide-toggle formControlName="monday">Monday</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="tuesday">Tuesday</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="wednesday">Wednesday</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="thursday">Thursday</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="friday">Friday</mat-slide-toggle>
+                </div>
+                <div class="content">
+                    <button type="submit" [color]="'accent'" mat-raised-button>
+                        Save Info
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+    <mat-card class="class-card lg:col-span-3 p-4">
+        <h2>
+            Teams
+            <button (click)="addVisible = true" matTooltip="Add Team" [matTooltipPosition]="'above'" mat-mini-fab>
+                <mat-icon>add</mat-icon>
+            </button>
+            <!-- <button *ngIf="addVisible" (click)="addVisible = false" matTooltip="Cancel" [matTooltipPosition]="'above'"
+                mat-mini-fab>
+                <mat-icon>cancel</mat-icon>
+            </button> -->
+        </h2>
+        <!-- <pe-teamwidget [teamList]="tempteams" [addVisible]="addVisible"></pe-teamwidget> -->
+    </mat-card>
+    <mat-card class="class-card lg:col-span-3 p-4">
+        <h2>Faculty</h2>
+    </mat-card>
+</div>
+
+<div class="content grid grid-cols-1 md:grid-cols-2 gap-4">
+    <mat-card class="class-card">
+        <mat-card-header>
+            <h2>
+                Sessions
+                <!-- <a [routerLink]="['/session/newsession']"><mat-icon>add</mat-icon></a> -->
+            </h2>
+        </mat-card-header>
+        <mat-card-content>
+            <!-- <div *ngIf="classId; else notSaved">
+                <ul>
+                    <li *ngFor="let s of $classSessions | async">
+                        <a [routerLink]="['/session/overview', classId, s.id]">{{
+                            s.name ? s.name : "Untitled Session"
+                            }}</a>
+                    </li>
+                </ul>
+            </div>
+            <ng-template #notSaved>
+                <p>Save class to add sessions</p>
+            </ng-template> -->
+        </mat-card-content>
+        <mat-card-actions> </mat-card-actions>
+    </mat-card>
+    <mat-card class="class-card p-4">
+        <h2>Judges</h2>
+        <!-- <div *ngIf="$classSessions | async as sessions">
+            <mat-form-field>
+                <mat-select [(value)]="sessjudge">
+                    <mat-option *ngFor="let s of sessions" [value]="s.id">{{
+                        s.name
+                        }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> -->
+        <!-- <div *ngIf="sessjudge">
+            <ul *ngIf="$sessionJudges(sessjudge) | async as judges">
+                <li *ngFor="let j of judges">{{ j.displayname }} ({{ j.email }})</li>
+            </ul>
+        </div> -->
+    </mat-card>
+</div>
+
+<mat-card class="class-card p-4">
+    <h2>
+        Students<button matTooltip="Add Users" [matTooltipPosition]="'above'" mat-mini-fab>
+            <mat-icon>add</mat-icon>
+        </button>
+    </h2>
+    <!-- <div *ngIf="currentclass && currentclass.students">
+        <pe-user-bar [users]="currentclass?.students"
+            [groupLabel]="'Students (' + currentclass?.students.length + ')'"
+            [showUserHint]="currentclass?.students.length < 10" expanded="false"></pe-user-bar>
+    </div> -->
+</mat-card>

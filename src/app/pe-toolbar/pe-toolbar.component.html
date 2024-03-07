@@ -1,10 +1,10 @@
-<mat-toolbar color="primary">
-    <div>
-        <a mat-button routerLink="/">
-            <img height="50px" width="170px" src="/assets/images/pitcheval_logo_small.png" />
+<mat-toolbar color="primary" class="flex justify-between overflow-hidden">
+    <div class="flex items-center">
+        <a mat-button routerLink="/" class="flex items-center">
+            <img class="hidden md:flex" height="50px" width="170px" src="/assets/images/pitcheval_logo_small.png" />
             <img class="md:hidden" height="50px" src="/assets/icons/android-chrome-192x192.png" />
         </a>
-        <button class="md:hidden" mat-icon-button [matMenuTriggerFor]="menu">
+        <button class="lg:hidden" mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
@@ -16,30 +16,20 @@
             <a routerLink="/summary" mat-menu-item>Results</a>
             <a mat-menu-item routerLink="/session/questionaire-overview">Questionnaire</a>
         </mat-menu>
+        <div class="hidden lg:flex">
+            <a routerLink="/class/new" mat-button>New Class</a>
+            <a routerLink="/class" mat-button>Class List</a>
+            <a routerLink="/profile/users" mat-button>Users</a>
+            <a *ngIf="isLoggedIn" routerLink="/judgesession" mat-button>Judge</a>
+            <button *ngIf="isLoggedIn && (isAdmin || isFaculty)" mat-button>
+                Sessions
+            </button>
+            <a *ngIf="isLoggedIn && (isAdmin || isFaculty)" routerLink="/summary" mat-button>Results</a>
+            <a *ngIf="isLoggedIn && (isAdmin || isFaculty)" mat-button
+                routerLink="/session/questionaire-overview">Questionnaire</a>
+        </div>
     </div>
-
     <div>
-        <a routerLink="/class/new" mat-button>New Class</a>
-        <a routerLink="/class" mat-button>Class List</a>
-        <a routerLink="/profile/users" mat-button>Users</a>
-        <a *ngIf="isLoggedIn" routerLink="/judgesession" mat-button>Judge</a>
-        <button *ngIf="isLoggedIn && (isAdmin || isFaculty)" mat-button>
-            Sessions
-        </button>
-        <!-- <mat-menu #sessionList="matMenu">
-        <a *ngIf="isLoggedIn && (isAdmin || isFaculty)" [routerLink]="SessionOverviewLink | async" mat-menu-item>New
-            Session</a>
-        <a *ngFor="let sessMenuItem of $ActiveSessionMenuItems | async" [routerLink]="sessMenuItem.link"
-            mat-menu-item [matTooltip]="sessMenuItem.hint" matTooltipPosition="after">{{ sessMenuItem.name }}</a>
-    </mat-menu> -->
-        <a *ngIf="isLoggedIn && (isAdmin || isFaculty)" routerLink="/summary" mat-button>Results</a>
-        <a *ngIf="isLoggedIn && (isAdmin || isFaculty)" mat-button
-            routerLink="/session/questionaire-overview">Questionnaire</a>
+        <pe-profilewidget></pe-profilewidget>
     </div>
-    <pe-profilewidget></pe-profilewidget>
-    <!-- <span *ngIf="!($online | async)" matTooltip="offline" matTooltipPosition="below">
-    <mat-icon>cloud_off</mat-icon>
-</span> -->
 </mat-toolbar>
-
-<div *ngIf="authError" style="background-color: warning">{{ authError }}</div>

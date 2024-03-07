@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule, MatCardContent } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTableModule } from '@angular/material/table';
@@ -15,19 +15,27 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FileInputComponent } from './file-input/file-input.component';
 import { PeToolbarComponent } from './pe-toolbar/pe-toolbar.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { SectionEvalOverviewComponent } from './section-eval-overview/section-eval-overview.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { PeProfileWidgetComponent } from './pe-profile-widget/pe-profile-widget.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PeHomeComponent } from './pe-home/pe-home.component';
+import { PeEditclassComponent } from './pe-editclass/pe-editclass.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { UsersComponent } from './users/users.component';
+
 
 @NgModule({
-    declarations: [AppComponent, SectionEvalOverviewComponent, FileInputComponent, PeToolbarComponent, PeProfileWidgetComponent],
+    declarations: [AppComponent, FileInputComponent, PeToolbarComponent, PeProfileWidgetComponent, PeHomeComponent, PeEditclassComponent, UsersComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
+        MatSelectModule,
         MatButtonModule,
         MatIconModule,
         MatFormFieldModule,
+        MatCardContent,
         MatInputModule,
         MatCardModule,
         MatTableModule,
@@ -36,7 +44,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatSidenavModule,
         MatToolbarModule,
         MatMenuModule,
-        MatTooltipModule
+        MatTooltipModule,
+        CommonModule,
+        ReactiveFormsModule,
     ],
     providers: [provideAnimationsAsync()],
     bootstrap: [AppComponent],
